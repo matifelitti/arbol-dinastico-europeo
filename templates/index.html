@@ -3,40 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Árbol Dinástico Europeo</title>
-    <style>
-        body, html {
-            margin: 0; padding: 0; height: 100%; width: 100%;
-            background-color: #f9f9e6; overflow: hidden;
-        }
-
-        #viewport {
-            width: 100vw;
-            height: 100vh;
-            overflow: auto;
-            display: grid;
-            place-items: start center;
-
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-
-        #viewport::-webkit-scrollbar {
-            display: none;
-        }
-
-        #canvas {
-            display: inline-block;
-            padding: 40px;
-        }
-
-        #mi-arbol {
-            display: block;
-            border: none;
-            width: 1400px;
-            height: auto;
-            transition: width 0.1s ease-out;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
 
@@ -46,55 +13,7 @@
         </div>
     </div>
 
-    <script>
-        const obj = document.getElementById('mi-arbol');
-        const viewport = document.getElementById('viewport');
-        let currentWidth = 1400;
-
-        window.addEventListener('wheel', (e) => {
-            if (e.ctrlKey) {
-                e.preventDefault();
-                if (e.deltaY < 0) currentWidth *= 1.1;
-                else currentWidth *= 0.9;
-
-                if (currentWidth < 600) currentWidth = 600;
-                if (currentWidth > 25000) currentWidth = 25000;
-
-                obj.style.width = currentWidth + "px";
-            }
-        }, { passive: false });
-
-        obj.addEventListener('load', function() {
-            try {
-                const svgDoc = this.contentDocument;
-                if (svgDoc) {
-                    const style = svgDoc.createElementNS("http://w3.org", "style");
-                    style.textContent = `
-                        text, tspan { fill: white !important; }
-                        a:link, a:visited, a:hover, a:active {
-                            fill: white !important;
-                            text-decoration: none !important;
-                        }
-                    `;
-                    svgDoc.documentElement.appendChild(style);
-
-                    const links = svgDoc.querySelectorAll('a');
-                    links.forEach(function(link) {
-                        link.setAttribute('target', '_blank');
-                        link.style.cursor = "pointer";
-
-                        link.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            const url = this.getAttribute('xlink:href') || this.getAttribute('href');
-                            window.open(url, '_blank');
-                        });
-                    });
-                    console.log("Sistema de links y colores activado.");
-                }
-            } catch (error) {
-                console.error("Error al configurar el interior del SVG:", error);
-            }
-        });
-    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
+

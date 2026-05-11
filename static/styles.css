@@ -1,0 +1,27 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #f9f9e6;
+    overflow: hidden;
+}
+
+#viewport {
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    position: relative;
+}
+
+#canvas {
+    width: 5000px;
+    transform-origin: 0 0;
+    transition: transform 0.1s ease-out;
+}
+
+#mi-arbol {
+    width: 100%;
+    height: auto;
+    display: block;
+}
