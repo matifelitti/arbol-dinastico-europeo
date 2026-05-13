@@ -1,0 +1,17 @@
+# Cache de Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Entornos virtuales locales (por si creas uno en PyCharm)
+venv/
+.venv/
+env/
+ENV/
+
+# Carpetas de configuración de PyCharm
+.idea/
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
